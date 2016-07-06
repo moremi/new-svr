@@ -9,8 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "ITPeer.h"
 
-@interface ITSession : NSObject
-@property (nonatomic, strong) NSMutableArray <ITPeer *> *peers;
+@protocol ITSessionDelegate
+- (void)didReceiveData:(NSData *)data fromPeer:(id<ITPeer>)peer;
+@end
 
-- (void)invitePeer:(ITPeer *)peer;
+
+@protocol ITSession <NSObject>
+@property (nonatomic, strong) NSMutableArray <id<ITPeer>> *peers;
+@property (nonatomic, strong) id<ITPeer> hostPeer;
+@property (nonatomic, weak) id<ITSessionDelegate> delegate;
+
+- (instancetype)initWithHostPeer:(id<ITPeer>)peer;
+- (void)sendData:(NSData *)data toPeers:(NSArray <id<ITPeer>> *)peers;
+- (void)invitePeer:(id<ITPeer>)peer;
 @end

@@ -23,9 +23,9 @@ typedef NS_ENUM(UInt8, ITPeerRolesEstablisherStatus){
     ITPeerRolesEstablisherStatusStopped
 };
 
-@protocol ITPeerRolesEstablisherDelegate
-- (void)gotMasterRoleFromRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher withSlavePeer:(nonnull ITPeer *)slavePeer;
-- (void)gotSlaveRoleFromRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher withMasterPeer:(nonnull ITPeer *)masterPeer;
+@protocol ITPeerRolesEstablisherDelegate <NSObject>
+- (void)gotMasterRoleFromRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher withSlavePeer:(nonnull id<ITPeer>)slavePeer;
+- (void)gotSlaveRoleFromRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher withMasterPeer:(nonnull id<ITPeer>)masterPeer;
 - (void)notFoundEnoughPeersInRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher;
 @optional
 - (void)rolesEstablisher:(nonnull ITPeerRolesEstablisher *) rolesEstablisher statusChangedTo:(ITPeerRolesEstablisherStatus) status;
@@ -33,8 +33,8 @@ typedef NS_ENUM(UInt8, ITPeerRolesEstablisherStatus){
 
 @interface ITPeerRolesEstablisher : NSObject
 @property (nonatomic, weak, nullable) id<ITPeerRolesEstablisherDelegate> delegate;
-@property (nonatomic, readonly, nullable) ITSession *rolesSession;
+@property (nonatomic, readonly, nullable) id<ITSession> rolesSession;
 
-- (void)tryEstablishMasterAndSlavePeersInDiscoveredPeers:(nonnull NSArray <ITPeer *> *)discoveredPeers;
+- (void)tryEstablishMasterAndSlavePeersInDiscoveredPeers:(nonnull NSArray <id<ITPeer>> *)discoveredPeers;
 
 @end

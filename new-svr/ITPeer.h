@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ITPeer : NSObject
+@protocol ITPeer <NSObject>
 @property (nonatomic) NSString *peerID;
 @end
+

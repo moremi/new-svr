@@ -21,7 +21,7 @@
 
 @interface ITSessionsController : NSObject
 @property(nonatomic, weak) id <ITSessionsControllerDelegate> delegate;
-- (instancetype)initWithPeersDetector:(ITPeersDetector *)peersDetector
+- (instancetype)initWithPeersDetector:(id<ITPeersDetector>)peersDetector
                  peerRolesEstablisher:(ITPeerRolesEstablisher *)peerRolesEstablisher;
 
 - (void)establishMasterSlaveSession;

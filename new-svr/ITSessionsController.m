@@ -19,16 +19,16 @@ typedef NS_ENUM(NSUInteger, ITSessionsControllerPhase) {
 static const NSTimeInterval kDiscoveryTime = 2; //sec
 
 @interface ITSessionsController () <ITPeersDetectorDelegate, ITPeerRolesEstablisherDelegate>
-@property (nonatomic) ITPeersDetector *peersDetector;
+@property (nonatomic) id<ITPeersDetector> peersDetector;
 @property (nonatomic) ITPeerRolesEstablisher *rolesEstablisher;
-@property (nonatomic) NSMutableArray<ITPeer *> *discoveredPeers;
-@property (nonatomic) ITSession *masterSlaveSession;
+@property (nonatomic) NSMutableArray<id<ITPeer>> *discoveredPeers;
+@property (nonatomic) id<ITSession> masterSlaveSession;
 @property (nonatomic) ITSessionsControllerPhase phase;
 @end
 
 @implementation ITSessionsController
 
-- (instancetype)initWithPeersDetector:(ITPeersDetector *)peersDetector peerRolesEstablisher:(ITPeerRolesEstablisher *)peerRolesEstablisher
+- (instancetype)initWithPeersDetector:(id<ITPeersDetector>)peersDetector peerRolesEstablisher:(ITPeerRolesEstablisher *)peerRolesEstablisher
 {
     self = [super init];
     if (self) {
@@ -36,7 +36,7 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
         self.peersDetector.delegate = self;
         self.rolesEstablisher = peerRolesEstablisher;
         self.rolesEstablisher.delegate = self;
-        self.discoveredPeers = [[NSMutableArray<ITPeer *> alloc] init];
+        self.discoveredPeers = [[NSMutableArray<id<ITPeer>> alloc] init];
         [self.peersDetector startDiscovering];
     }
     return self;
@@ -109,7 +109,7 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
 
 #pragma mark - <ITPeersDetectorDelegate>
 
-- (void)peersDetector:(ITPeersDetector *)peersDetector foundPeer:(ITPeer *)peer
+- (void)peersDetector:(id<ITPeersDetector>)peersDetector foundPeer:(id<ITPeer>)peer
 {
     if (![self.discoveredPeers containsObject:peer])
     {
@@ -117,7 +117,7 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
     }
 }
 
-- (void)peersDetector:(ITPeersDetector *)peersDetector lostPeer:(ITPeer *)peer
+- (void)peersDetector:(id<ITPeersDetector>)peersDetector lostPeer:(id<ITPeer>)peer
 {
     if ([self.discoveredPeers containsObject:peer])
     {
@@ -127,14 +127,14 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
 
 #pragma mark - <ITPeerRolesEstablisherDelegate>
 
-- (void)gotMasterRoleFromRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher withSlavePeer:(nonnull ITPeer *)slavePeer
+- (void)gotMasterRoleFromRolesEstablisher:(ITPeerRolesEstablisher *)rolesEstablisher withSlavePeer:(id<ITPeer>)slavePeer
 {
     ITMasterSessionManager *masterSessionManager = [[ITMasterSessionManager alloc] initWithSession:self.masterSlaveSession andSlavePeer:slavePeer];
     [self.delegate sessionController:self didEstablishMasterSession:masterSessionManager];
     [self.masterSlaveSession invitePeer:slavePeer];
 }
 
-- (void)gotSlaveRoleFromRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher withMasterPeer:(nonnull ITPeer *)masterPeer
+- (void)gotSlaveRoleFromRolesEstablisher:(ITPeerRolesEstablisher *)rolesEstablisher withMasterPeer:(id<ITPeer>)masterPeer
 {
     ITSlaveSessionManager *slaveSessionManager = [[ITSlaveSessionManager alloc] initWithSession:self.masterSlaveSession andMasterPeer:masterPeer];
     [self.delegate sessionController:self didEstablishSlaveSession:slaveSessionManager];

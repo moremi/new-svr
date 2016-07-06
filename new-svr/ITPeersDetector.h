@@ -9,19 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "ITPeer.h"
 
-@class ITPeersDetector;
+@protocol ITPeersDetector;
 
 @protocol ITPeersDetectorDelegate
-- (void)peersDetector:(ITPeersDetector *)peersDetector foundPeer:(ITPeer *)peer;
-- (void)peersDetector:(ITPeersDetector *)peersDetector lostPeer:(ITPeer *)peer;
+- (void)peersDetector:(id<ITPeersDetector>)peersDetector foundPeer:(id<ITPeer>)peer;
+- (void)peersDetector:(id<ITPeersDetector>)peersDetector lostPeer:(id<ITPeer>)peer;
 @end
 
-
-@interface ITPeersDetector : NSObject
+@protocol ITPeersDetector
 @property (nonatomic, weak) id<ITPeersDetectorDelegate> delegate;
-- (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithServiceType:(NSString *)serviceType NS_DESIGNATED_INITIALIZER;
-
+- (instancetype)initWithServiceType:(NSString *)serviceType;
 - (void)startDiscovering;
 - (void)stopDiscovering;
 @end
