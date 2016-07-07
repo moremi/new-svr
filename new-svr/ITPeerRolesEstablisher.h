@@ -28,13 +28,13 @@ typedef NS_ENUM(UInt8, ITPeerRolesEstablisherStatus){
 - (void)gotSlaveRoleFromRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher withMasterPeer:(nonnull id<ITPeer>)masterPeer;
 - (void)notFoundEnoughPeersInRolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher;
 @optional
-- (void)rolesEstablisher:(nonnull ITPeerRolesEstablisher *) rolesEstablisher statusChangedTo:(ITPeerRolesEstablisherStatus) status;
+- (void)rolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher statusChangedTo:(ITPeerRolesEstablisherStatus) status;
 @end
 
 @interface ITPeerRolesEstablisher : NSObject
 @property (nonatomic, weak, nullable) id<ITPeerRolesEstablisherDelegate> delegate;
 @property (nonatomic, readonly, nullable) id<ITSession> rolesSession;
 
+- (instancetype)initWithHostPeer:(nonnull id<ITPeer>)hostPeer;
 - (void)tryEstablishMasterAndSlavePeersInDiscoveredPeers:(nonnull NSArray <id<ITPeer>> *)discoveredPeers;
-
 @end

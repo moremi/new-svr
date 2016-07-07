@@ -11,6 +11,6 @@
 
 @interface ITSlaveSessionManager : NSObject
 
-- (instancetype)initWithSession:(ITSession *)session andMasterPeer:(ITPeer *)slavePeer;
+- (instancetype)initWithSession:(id<ITSession>)session andMasterPeer:(id<ITPeer>)slavePeer;
 
 @end

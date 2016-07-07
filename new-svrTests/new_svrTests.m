@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "ITPeerRolesEstablisher.h"
 
 @interface new_svrTests : XCTestCase
 
@@ -24,10 +25,13 @@
     [super tearDown];
 }
 
+
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    
+    id<ITPeer> peer;
+    ITPeerRolesEstablisher *roles = [[ITPeerRolesEstablisher alloc] initWithHostPeer:peer];
+    [roles tryEstablishMasterAndSlavePeersInDiscoveredPeers:@[peer,peer,peer]];
 }
 
 - (void)testPerformanceExample {

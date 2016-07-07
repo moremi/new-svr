@@ -19,6 +19,8 @@
 		F5B13AB91D2BFD9D0078E314 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B13AB71D2BFD9D0078E314 /* LaunchScreen.storyboard */; };
 		F5B13AC41D2BFD9D0078E314 /* new_svrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B13AC31D2BFD9D0078E314 /* new_svrTests.m */; };
 		F5ED994F1D2D507D00A9527E /* ITConnectingAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED994E1D2D507D00A9527E /* ITConnectingAssembly.m */; };
+		F5ED99531D2E4CEF00A9527E /* ITPeerRoleMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED99521D2E4CEF00A9527E /* ITPeerRoleMessage.m */; };
+		F5ED99561D2E4E5200A9527E /* ITTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED99551D2E4E5200A9527E /* ITTransport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		F5B13AD21D2BFE8E0078E314 /* ITPeersDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPeersDetector.h; sourceTree = "<group>"; };
 		F5ED994D1D2D507D00A9527E /* ITConnectingAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITConnectingAssembly.h; sourceTree = "<group>"; };
 		F5ED994E1D2D507D00A9527E /* ITConnectingAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITConnectingAssembly.m; sourceTree = "<group>"; };
+		F5ED99511D2E4CEF00A9527E /* ITPeerRoleMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ITPeerRoleMessage.h; path = PeerMessaging/ITPeerRoleMessage.h; sourceTree = "<group>"; };
+		F5ED99521D2E4CEF00A9527E /* ITPeerRoleMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ITPeerRoleMessage.m; path = PeerMessaging/ITPeerRoleMessage.m; sourceTree = "<group>"; };
+		F5ED99541D2E4E5200A9527E /* ITTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTransport.h; sourceTree = "<group>"; };
+		F5ED99551D2E4E5200A9527E /* ITTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTransport.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,7 @@
 		F5B13ACE1D2BFDFD0078E314 /* Connecting */ = {
 			isa = PBXGroup;
 			children = (
+				F5ED99501D2E4BB500A9527E /* PeerMessaging */,
 				F5B13ACF1D2BFE2C0078E314 /* ITPeer.h */,
 				F578A4411D2CF6C00043FAB9 /* ITSession.h */,
 				F5B13AD21D2BFE8E0078E314 /* ITPeersDetector.h */,
@@ -146,8 +153,19 @@
 				F578A4451D2CFF040043FAB9 /* ITSessionsController.m */,
 				F5ED994D1D2D507D00A9527E /* ITConnectingAssembly.h */,
 				F5ED994E1D2D507D00A9527E /* ITConnectingAssembly.m */,
+				F5ED99541D2E4E5200A9527E /* ITTransport.h */,
+				F5ED99551D2E4E5200A9527E /* ITTransport.m */,
 			);
 			name = Connecting;
+			sourceTree = "<group>";
+		};
+		F5ED99501D2E4BB500A9527E /* PeerMessaging */ = {
+			isa = PBXGroup;
+			children = (
+				F5ED99511D2E4CEF00A9527E /* ITPeerRoleMessage.h */,
+				F5ED99521D2E4CEF00A9527E /* ITPeerRoleMessage.m */,
+			);
+			name = PeerMessaging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5ED99561D2E4E5200A9527E /* ITTransport.m in Sources */,
 				F578A44C1D2D00250043FAB9 /* ITSlaveSessionManager.m in Sources */,
+				F5ED99531D2E4CEF00A9527E /* ITPeerRoleMessage.m in Sources */,
 				F578A4461D2CFF040043FAB9 /* ITSessionsController.m in Sources */,
 				F5B13AB11D2BFD9D0078E314 /* ViewController.m in Sources */,
 				F5B13AAE1D2BFD9D0078E314 /* AppDelegate.m in Sources */,

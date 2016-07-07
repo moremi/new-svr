@@ -10,4 +10,10 @@
 
 @implementation ITConnectingAssembly
 
++ (id<ITSession>)initSessionWithHostPeer:(id<ITPeer>)hostPeer
+{
+    id<ITSession> session;
+    return session;
+}
+
 @end

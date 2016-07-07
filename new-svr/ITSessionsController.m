@@ -8,6 +8,7 @@
 
 #import "ITSessionsController.h"
 #import "ITSession.h"
+#import "ITConnectingAssembly.h"
 
 typedef NS_ENUM(NSUInteger, ITSessionsControllerPhase) {
     ITSessionsControllerPhasePeersNone,
@@ -20,6 +21,7 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
 
 @interface ITSessionsController () <ITPeersDetectorDelegate, ITPeerRolesEstablisherDelegate>
 @property (nonatomic) id<ITPeersDetector> peersDetector;
+@property (nonatomic) id<ITPeer> hostPeer;
 @property (nonatomic) ITPeerRolesEstablisher *rolesEstablisher;
 @property (nonatomic) NSMutableArray<id<ITPeer>> *discoveredPeers;
 @property (nonatomic) id<ITSession> masterSlaveSession;
@@ -38,10 +40,10 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
         self.rolesEstablisher.delegate = self;
         self.discoveredPeers = [[NSMutableArray<id<ITPeer>> alloc] init];
         [self.peersDetector startDiscovering];
+        self.masterSlaveSession = [ITConnectingAssembly initSessionWithHostPeer:self.hostPeer];
     }
     return self;
 }
-
 
 - (void)setPhase:(ITSessionsControllerPhase)phase {
     _phase = phase;
@@ -50,22 +52,18 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
             [self.peersDetector stopDiscovering];
         }
             break;
-            
         case ITSessionsControllerPhasePeersDiscovering: {
             [self checkDiscoveredPeersAfterDelay:kDiscoveryTime];
         }
             break;
-            
         case ITSessionsControllerPhaseMasterSlaveDetection: {
             [self findMasterAndSlavePeers];
         }
             break;
-            
         case ITSessionsControllerPhaseMasterSlaveSessionEstablished: {
             
         }
             break;
-            
         default:
             break;
     }

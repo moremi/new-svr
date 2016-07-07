@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ITSession.h"
+#import "ITTransport.h"
 
 @interface ITConnectingAssembly : NSObject
 
-+ (id<ITSession>)initSession
++ (id<ITSession>)initSessionWithHostPeer:(id<ITPeer>)hostPeer;
 
 @end
