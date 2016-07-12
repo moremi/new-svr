@@ -7,21 +7,21 @@
 //
 
 #import "ViewController.h"
+#import "ITBonjourSession.h"
+#import "ITBonjourPeersDetector.h"
 
 @interface ViewController ()
-
+@property (nonatomic) ITBonjourSession *session;
+@property (nonatomic) ITBonjourPeersDetector *detector;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.session = [[ITBonjourSession alloc] initWithHostPeer:nil];
+    self.detector = [[ITBonjourPeersDetector alloc] initWithServiceType:nil];
     // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

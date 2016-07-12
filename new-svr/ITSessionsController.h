@@ -19,10 +19,11 @@
 - (void)sessionController:(ITSessionsController *)sessionController didEstablishSlaveSession:(ITSlaveSessionManager *)slaveSessionManager;
 @end
 
-@interface ITSessionsController : NSObject
+@interface ITSessionsController : NSObject <ITPeersDetectorDelegate, ITPeerRolesEstablisherDelegate>
 @property(nonatomic, weak) id <ITSessionsControllerDelegate> delegate;
 - (instancetype)initWithPeersDetector:(id<ITPeersDetector>)peersDetector
-                 peerRolesEstablisher:(ITPeerRolesEstablisher *)peerRolesEstablisher;
+                 peerRolesEstablisher:(ITPeerRolesEstablisher *)peerRolesEstablisher
+                             hostPeer:(id<ITPeer>)hostPeer;
 
 - (void)establishMasterSlaveSession;
 - (void)stopMasterSlaveSession;

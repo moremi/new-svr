@@ -8,14 +8,13 @@
 
 #import "ITPeerRolesEstablisher.h"
 #import "ITPeerRoleMessage.h"
-#import "ITTransport.h"
 #import "ITConnectingAssembly.h"
 
 const NSTimeInterval kTimeToCheckSession = 2; //sec
 const NSTimeInterval kTimeToWaitTelemetryResponses = 3; //sec
 const NSTimeInterval kTimeToWaitForTelemetry = 2; //sec
 
-@interface ITPeerRolesEstablisher () <ITTransportDelegate>
+@interface ITPeerRolesEstablisher ()
 @property (nonatomic) NSArray<id<ITPeer>> *discoveredPeers;
 @property (nonatomic) id<ITPeer> hostPeer;
 @property (nonatomic) id<ITPeer> primePeer;
@@ -29,29 +28,36 @@ const NSTimeInterval kTimeToWaitForTelemetry = 2; //sec
 
 @implementation ITPeerRolesEstablisher
 
-- (instancetype)initWithHostPeer:(id<ITPeer>)hostPeer;
+- (instancetype)initWithHostPeer:(id<ITPeer>)hostPeer rolesSession:(id<ITSession>)rolesSession transport:(ITTransport *)transport
 {
     self = [super init];
     if (self) {
         self.hostPeer = hostPeer;
-        self.rolesSession = [ITConnectingAssembly initSessionWithHostPeer:hostPeer];
-        self.transport = [[ITTransport alloc] initWithSession:self.rolesSession];
+        self.rolesSession = rolesSession;
+        self.transport = transport;
         self.rolesSession.delegate = self.transport;
         self.transport.delegate = self;
+        self.peersTelemetry = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 #pragma mark - Setters
-- (void)setStatus:(ITPeerRolesEstablisherStatus)status{
+- (void)setStatus:(ITPeerRolesEstablisherStatus)status
+{
     _status = status;
     switch (status) {
         case ITPeerRolesEstablisherStatusStarted:{
-            [self findPrimePeer];
+            self.primePeer = nil;
+            self.primePeer = [self findPrimePeerFromDiscoveredPeers:self.discoveredPeers withHostPeer:self.hostPeer];
+            if (self.primePeer != nil) self.status = ITPeerRolesEstablisherStatusPrimeFounded;
         }
             break;
         case ITPeerRolesEstablisherStatusPrimeFounded:{
-            [self startFindingMasterAndSlaveIfHostIsPrime];
+            if ([self.primePeer.peerID isEqualToString:self.hostPeer.peerID]) {
+                [self inviteDiscoveredPeers:self.discoveredPeers intoSession:self.rolesSession];
+                [self checkConnectedToSessionPeersAfterDelay:kTimeToCheckSession];
+            }
         }
             break;
         case ITPeerRolesEstablisherStatusPeersConnected:{
@@ -78,35 +84,37 @@ const NSTimeInterval kTimeToWaitForTelemetry = 2; //sec
 #pragma mark - Private methods
 #pragma mark - Status Started
 
-- (void)findPrimePeer
+- (id<ITPeer>)findPrimePeerFromDiscoveredPeers:(NSArray *)discoveredPeers withHostPeer:(id<ITPeer>)hostPeer
 {
-    NSMutableArray *allPeers = [NSMutableArray arrayWithArray:self.discoveredPeers];
-    [allPeers addObject:self.hostPeer];
-    NSArray *sortedPeers = [allPeers sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        id<ITPeer> firstPeer = (id<ITPeer>)obj1;
-        id<ITPeer> secondPeer = (id<ITPeer>)obj2;
-        return [firstPeer.peerID compare:secondPeer.peerID options:NSLiteralSearch];
-    }];
-    self.primePeer = sortedPeers.firstObject;
-    self.status = ITPeerRolesEstablisherStatusPrimeFounded;
+    if (discoveredPeers.count > 0) {
+        NSMutableArray *allPeers = [[NSMutableArray alloc] init];
+        [allPeers addObject:hostPeer];
+        [allPeers addObjectsFromArray:discoveredPeers];
+        NSArray *sortedPeers = [allPeers sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            id<ITPeer> firstPeer = (id<ITPeer>)obj1;
+            id<ITPeer> secondPeer = (id<ITPeer>)obj2;
+            return [firstPeer.peerID compare:secondPeer.peerID options:NSLiteralSearch];
+        }];
+        for (id<ITPeer> peer in sortedPeers) {
+            NSLog(@"__%@",peer.peerID);
+        }
+        id<ITPeer> peer = (id<ITPeer>)sortedPeers.firstObject;
+        NSLog(@"__%@",peer.peerID);
+        return sortedPeers.firstObject;
+        
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - Status PrimeFounded
 
-- (void)startFindingMasterAndSlaveIfHostIsPrime
+- (void)inviteDiscoveredPeers:(NSArray <id<ITPeer>> *)discoveredPeers
+                  intoSession:(id<ITSession>)session
 {
-    if ([self.primePeer.peerID isEqualToString:self.hostPeer.peerID]) {
-        [self startFindingMasterAndSlaveBetweenHostPeer:self.hostPeer andDiscoveredPeers:self.discoveredPeers];
+    for (id<ITPeer> peer in discoveredPeers) {
+        [session invitePeer:peer];
     }
-}
-
-- (void)startFindingMasterAndSlaveBetweenHostPeer:(id<ITPeer>)hostPeer
-                                andDiscoveredPeers:(NSArray <id<ITPeer>> *)discoveredPeers
-{
-    for (id<ITPeer> peer in self.discoveredPeers) {
-        [self.rolesSession invitePeer:peer];
-    }
-    [self checkConnectedToSessionPeersAfterDelay:kTimeToCheckSession];
 }
 
 - (void)checkConnectedToSessionPeersAfterDelay:(NSTimeInterval)delay
@@ -158,19 +166,30 @@ const NSTimeInterval kTimeToWaitForTelemetry = 2; //sec
 
 #pragma mark - Status TelemetryReceived
 
+- (id<ITPeer>)peerFromPeerID:(NSString *)peerID
+{
+    for (id<ITPeer> peer in self.discoveredPeers) {
+        if ([peer.peerID isEqualToString:peerID])
+        {
+            return peer;
+        }
+    }
+    return nil;
+}
+
 - (void)chooseMasterAndSlaveByTelemetryData:(NSDictionary<NSString *, NSObject *> *)telemetryData
 {
-    for (id<ITPeer> firstPeer in self.peersTelemetry.allKeys) {
-        for (id<ITPeer> secondPeer in self.peersTelemetry.allKeys) {
-            if (![firstPeer isEqual:secondPeer]) {
+    for (NSString *firstPeer in self.peersTelemetry.allKeys) {
+        for (NSString *secondPeer in self.peersTelemetry.allKeys) {
+            if (![firstPeer isEqualToString:secondPeer]) {
                 /*if ([ITCorrelationRecognizer isFirstDeviceData:(NSData *)[self.peersTelemetry objectForKey:firstPeer]
                                  correlatingToSecondDeviceData:(NSData *)[self.peersTelemetry objectForKey:secondPeer]]) {*/
                 if (0==0) {
                     
 #warning choose who is master & slave properly
                     
-                    self.masterPeer = firstPeer;
-                    self.slavePeer = secondPeer;
+                    self.masterPeer = [self peerFromPeerID:firstPeer];
+                    self.slavePeer = [self peerFromPeerID:secondPeer];
                     
                     NSLog(@"slave will be  %@, \nmaster will be %@", firstPeer, secondPeer);
                     

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ITPeer.h"
 #import "ITSession.h"
+#import "ITTransport.h"
 
 @class ITPeerRolesEstablisher;
 
@@ -31,10 +32,14 @@ typedef NS_ENUM(UInt8, ITPeerRolesEstablisherStatus){
 - (void)rolesEstablisher:(nonnull ITPeerRolesEstablisher *)rolesEstablisher statusChangedTo:(ITPeerRolesEstablisherStatus) status;
 @end
 
-@interface ITPeerRolesEstablisher : NSObject
+@interface ITPeerRolesEstablisher : NSObject <ITTransportDelegate>
 @property (nonatomic, weak, nullable) id<ITPeerRolesEstablisherDelegate> delegate;
 @property (nonatomic, readonly, nullable) id<ITSession> rolesSession;
 
-- (instancetype)initWithHostPeer:(nonnull id<ITPeer>)hostPeer;
+- (instancetype)initWithHostPeer:(nonnull id<ITPeer>)hostPeer rolesSession:(nonnull id<ITSession>)rolesSession transport:(nonnull ITTransport *)transport;
 - (void)tryEstablishMasterAndSlavePeersInDiscoveredPeers:(nonnull NSArray <id<ITPeer>> *)discoveredPeers;
+
+- (id<ITPeer>)findPrimePeerFromDiscoveredPeers:(NSArray *)discoveredPeers withHostPeer:(id<ITPeer>)hostPeer;
+- (void)inviteDiscoveredPeers:(NSArray <id<ITPeer>> *)discoveredPeers intoSession:(id<ITSession>)session;
+
 @end

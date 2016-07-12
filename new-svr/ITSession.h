@@ -10,6 +10,7 @@
 #import "ITPeer.h"
 
 @protocol ITSessionDelegate
+- (void)didReceiveInvitation:(void(^)(BOOL accept))invintationHandler fromPeer:(id<ITPeer>)peer;
 - (void)didReceiveData:(NSData *)data fromPeer:(id<ITPeer>)peer;
 @end
 

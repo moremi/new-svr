@@ -7,12 +7,13 @@
 //
 
 #import "ITConnectingAssembly.h"
+#import "ITBonjourSession.h"
 
 @implementation ITConnectingAssembly
 
 + (id<ITSession>)initSessionWithHostPeer:(id<ITPeer>)hostPeer
 {
-    id<ITSession> session;
+    ITBonjourSession *session = [[ITBonjourSession alloc] init];
     return session;
 }
 

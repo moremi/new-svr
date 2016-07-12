@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, ITSessionsControllerPhase) {
 
 static const NSTimeInterval kDiscoveryTime = 2; //sec
 
-@interface ITSessionsController () <ITPeersDetectorDelegate, ITPeerRolesEstablisherDelegate>
+@interface ITSessionsController () 
 @property (nonatomic) id<ITPeersDetector> peersDetector;
 @property (nonatomic) id<ITPeer> hostPeer;
 @property (nonatomic) ITPeerRolesEstablisher *rolesEstablisher;
@@ -30,7 +30,9 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
 
 @implementation ITSessionsController
 
-- (instancetype)initWithPeersDetector:(id<ITPeersDetector>)peersDetector peerRolesEstablisher:(ITPeerRolesEstablisher *)peerRolesEstablisher
+- (instancetype)initWithPeersDetector:(id<ITPeersDetector>)peersDetector
+                 peerRolesEstablisher:(ITPeerRolesEstablisher *)peerRolesEstablisher
+                             hostPeer:(id<ITPeer>)hostPeer
 {
     self = [super init];
     if (self) {
@@ -38,6 +40,7 @@ static const NSTimeInterval kDiscoveryTime = 2; //sec
         self.peersDetector.delegate = self;
         self.rolesEstablisher = peerRolesEstablisher;
         self.rolesEstablisher.delegate = self;
+        self.hostPeer = hostPeer;
         self.discoveredPeers = [[NSMutableArray<id<ITPeer>> alloc] init];
         [self.peersDetector startDiscovering];
         self.masterSlaveSession = [ITConnectingAssembly initSessionWithHostPeer:self.hostPeer];

@@ -10,4 +10,13 @@
 
 @implementation ITMasterSessionManager
 
+- (instancetype)initWithSession:(id<ITSession>)session andSlavePeer:(id<ITPeer>)slavePeer
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 @end

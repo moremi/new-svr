@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		576E959998F591603FCC1FDB /* libPods-new-svrTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3109A96E750191F0A8680DAC /* libPods-new-svrTests.a */; };
+		DE81607536CED73A2B1B0C6E /* libPods-new-svr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EACF751663B83B417AF06525 /* libPods-new-svr.a */; };
 		F578A4401D2CF3730043FAB9 /* ITPeerRolesEstablisher.m in Sources */ = {isa = PBXBuildFile; fileRef = F578A43F1D2CF3730043FAB9 /* ITPeerRolesEstablisher.m */; };
 		F578A4461D2CFF040043FAB9 /* ITSessionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F578A4451D2CFF040043FAB9 /* ITSessionsController.m */; };
 		F578A4491D2D00180043FAB9 /* ITMasterSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F578A4481D2D00180043FAB9 /* ITMasterSessionManager.m */; };
@@ -17,10 +19,14 @@
 		F5B13AB41D2BFD9D0078E314 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B13AB21D2BFD9D0078E314 /* Main.storyboard */; };
 		F5B13AB61D2BFD9D0078E314 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B13AB51D2BFD9D0078E314 /* Assets.xcassets */; };
 		F5B13AB91D2BFD9D0078E314 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B13AB71D2BFD9D0078E314 /* LaunchScreen.storyboard */; };
-		F5B13AC41D2BFD9D0078E314 /* new_svrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B13AC31D2BFD9D0078E314 /* new_svrTests.m */; };
+		F5B13AC41D2BFD9D0078E314 /* PeerRolesEstablisherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B13AC31D2BFD9D0078E314 /* PeerRolesEstablisherTests.m */; };
 		F5ED994F1D2D507D00A9527E /* ITConnectingAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED994E1D2D507D00A9527E /* ITConnectingAssembly.m */; };
 		F5ED99531D2E4CEF00A9527E /* ITPeerRoleMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED99521D2E4CEF00A9527E /* ITPeerRoleMessage.m */; };
 		F5ED99561D2E4E5200A9527E /* ITTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED99551D2E4E5200A9527E /* ITTransport.m */; };
+		F5ED995A1D2FA19900A9527E /* ITBonjourPeer.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED99591D2FA19900A9527E /* ITBonjourPeer.m */; };
+		F5ED995D1D2FA4A300A9527E /* ITBonjourSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED995C1D2FA4A300A9527E /* ITBonjourSession.m */; };
+		F5ED995F1D33DAA700A9527E /* SessionsControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED995E1D33DAA700A9527E /* SessionsControllerTests.m */; };
+		F5ED99621D34EEB900A9527E /* ITBonjourPeersDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ED99611D34EEB900A9527E /* ITBonjourPeersDetector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1AFCCA5403E1FAF41E9D8A4E /* Pods-new-svr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new-svr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-new-svr/Pods-new-svr.debug.xcconfig"; sourceTree = "<group>"; };
+		1F4966EA885BF857C4767D68 /* Pods-new-svrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new-svrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-new-svrTests/Pods-new-svrTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3109A96E750191F0A8680DAC /* libPods-new-svrTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-new-svrTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A94184ACD4FDF4709395C8C /* Pods-new-svr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new-svr.release.xcconfig"; path = "Pods/Target Support Files/Pods-new-svr/Pods-new-svr.release.xcconfig"; sourceTree = "<group>"; };
+		8EB34D475717889A8352786A /* Pods-new-svrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new-svrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-new-svrTests/Pods-new-svrTests.release.xcconfig"; sourceTree = "<group>"; };
+		EACF751663B83B417AF06525 /* libPods-new-svr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-new-svr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F578A43E1D2CF3730043FAB9 /* ITPeerRolesEstablisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPeerRolesEstablisher.h; sourceTree = "<group>"; };
 		F578A43F1D2CF3730043FAB9 /* ITPeerRolesEstablisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITPeerRolesEstablisher.m; sourceTree = "<group>"; };
 		F578A4411D2CF6C00043FAB9 /* ITSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSession.h; sourceTree = "<group>"; };
@@ -54,7 +66,7 @@
 		F5B13AB81D2BFD9D0078E314 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5B13ABA1D2BFD9D0078E314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5B13ABF1D2BFD9D0078E314 /* new-svrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "new-svrTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5B13AC31D2BFD9D0078E314 /* new_svrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = new_svrTests.m; sourceTree = "<group>"; };
+		F5B13AC31D2BFD9D0078E314 /* PeerRolesEstablisherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeerRolesEstablisherTests.m; sourceTree = "<group>"; };
 		F5B13AC51D2BFD9D0078E314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5B13ACF1D2BFE2C0078E314 /* ITPeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPeer.h; sourceTree = "<group>"; };
 		F5B13AD21D2BFE8E0078E314 /* ITPeersDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPeersDetector.h; sourceTree = "<group>"; };
@@ -64,6 +76,13 @@
 		F5ED99521D2E4CEF00A9527E /* ITPeerRoleMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ITPeerRoleMessage.m; path = PeerMessaging/ITPeerRoleMessage.m; sourceTree = "<group>"; };
 		F5ED99541D2E4E5200A9527E /* ITTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTransport.h; sourceTree = "<group>"; };
 		F5ED99551D2E4E5200A9527E /* ITTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTransport.m; sourceTree = "<group>"; };
+		F5ED99581D2FA19900A9527E /* ITBonjourPeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ITBonjourPeer.h; path = BonjourConnecting/ITBonjourPeer.h; sourceTree = "<group>"; };
+		F5ED99591D2FA19900A9527E /* ITBonjourPeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ITBonjourPeer.m; path = BonjourConnecting/ITBonjourPeer.m; sourceTree = "<group>"; };
+		F5ED995B1D2FA4A300A9527E /* ITBonjourSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ITBonjourSession.h; path = BonjourConnecting/ITBonjourSession.h; sourceTree = "<group>"; };
+		F5ED995C1D2FA4A300A9527E /* ITBonjourSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ITBonjourSession.m; path = BonjourConnecting/ITBonjourSession.m; sourceTree = "<group>"; };
+		F5ED995E1D33DAA700A9527E /* SessionsControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsControllerTests.m; sourceTree = "<group>"; };
+		F5ED99601D34EEB900A9527E /* ITBonjourPeersDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ITBonjourPeersDetector.h; path = BonjourConnecting/ITBonjourPeersDetector.h; sourceTree = "<group>"; };
+		F5ED99611D34EEB900A9527E /* ITBonjourPeersDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ITBonjourPeersDetector.m; path = BonjourConnecting/ITBonjourPeersDetector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE81607536CED73A2B1B0C6E /* libPods-new-svr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,18 +98,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576E959998F591603FCC1FDB /* libPods-new-svrTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3268B5241C9DBFD58B9FDB4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EACF751663B83B417AF06525 /* libPods-new-svr.a */,
+				3109A96E750191F0A8680DAC /* libPods-new-svrTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F5B13A9D1D2BFD9D0078E314 = {
 			isa = PBXGroup;
 			children = (
 				F5B13AA81D2BFD9D0078E314 /* new-svr */,
 				F5B13AC21D2BFD9D0078E314 /* new-svrTests */,
 				F5B13AA71D2BFD9D0078E314 /* Products */,
+				F8C8B48B8E6030EF98876594 /* Pods */,
+				C3268B5241C9DBFD58B9FDB4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +137,7 @@
 		F5B13AA81D2BFD9D0078E314 /* new-svr */ = {
 			isa = PBXGroup;
 			children = (
+				F5ED99571D2FA16800A9527E /* BonjourConnecting */,
 				F5B13ACE1D2BFDFD0078E314 /* Connecting */,
 				F5B13AAC1D2BFD9D0078E314 /* AppDelegate.h */,
 				F5B13AAD1D2BFD9D0078E314 /* AppDelegate.m */,
@@ -130,7 +163,8 @@
 		F5B13AC21D2BFD9D0078E314 /* new-svrTests */ = {
 			isa = PBXGroup;
 			children = (
-				F5B13AC31D2BFD9D0078E314 /* new_svrTests.m */,
+				F5B13AC31D2BFD9D0078E314 /* PeerRolesEstablisherTests.m */,
+				F5ED995E1D33DAA700A9527E /* SessionsControllerTests.m */,
 				F5B13AC51D2BFD9D0078E314 /* Info.plist */,
 			);
 			path = "new-svrTests";
@@ -168,6 +202,30 @@
 			name = PeerMessaging;
 			sourceTree = "<group>";
 		};
+		F5ED99571D2FA16800A9527E /* BonjourConnecting */ = {
+			isa = PBXGroup;
+			children = (
+				F5ED99581D2FA19900A9527E /* ITBonjourPeer.h */,
+				F5ED99591D2FA19900A9527E /* ITBonjourPeer.m */,
+				F5ED995B1D2FA4A300A9527E /* ITBonjourSession.h */,
+				F5ED995C1D2FA4A300A9527E /* ITBonjourSession.m */,
+				F5ED99601D34EEB900A9527E /* ITBonjourPeersDetector.h */,
+				F5ED99611D34EEB900A9527E /* ITBonjourPeersDetector.m */,
+			);
+			name = BonjourConnecting;
+			sourceTree = "<group>";
+		};
+		F8C8B48B8E6030EF98876594 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1AFCCA5403E1FAF41E9D8A4E /* Pods-new-svr.debug.xcconfig */,
+				8A94184ACD4FDF4709395C8C /* Pods-new-svr.release.xcconfig */,
+				1F4966EA885BF857C4767D68 /* Pods-new-svrTests.debug.xcconfig */,
+				8EB34D475717889A8352786A /* Pods-new-svrTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -175,9 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5B13AC81D2BFD9D0078E314 /* Build configuration list for PBXNativeTarget "new-svr" */;
 			buildPhases = (
+				1783EF6DE5FDC25DDAC74CD2 /* Check Pods Manifest.lock */,
 				F5B13AA21D2BFD9D0078E314 /* Sources */,
 				F5B13AA31D2BFD9D0078E314 /* Frameworks */,
 				F5B13AA41D2BFD9D0078E314 /* Resources */,
+				9B4EA6FD91961AF0A71C854D /* Embed Pods Frameworks */,
+				6BEBA7F6FC513C3F9BF4E458 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,9 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5B13ACB1D2BFD9E0078E314 /* Build configuration list for PBXNativeTarget "new-svrTests" */;
 			buildPhases = (
+				28301C75775992EE3469A81E /* Check Pods Manifest.lock */,
 				F5B13ABB1D2BFD9D0078E314 /* Sources */,
 				F5B13ABC1D2BFD9D0078E314 /* Frameworks */,
 				F5B13ABD1D2BFD9D0078E314 /* Resources */,
+				5BA280D24CB3A1A9A8BF755A /* Embed Pods Frameworks */,
+				6076A32C2F72116D0C3113D9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,12 +327,108 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1783EF6DE5FDC25DDAC74CD2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		28301C75775992EE3469A81E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5BA280D24CB3A1A9A8BF755A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-new-svrTests/Pods-new-svrTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6076A32C2F72116D0C3113D9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-new-svrTests/Pods-new-svrTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BEBA7F6FC513C3F9BF4E458 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-new-svr/Pods-new-svr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B4EA6FD91961AF0A71C854D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-new-svr/Pods-new-svr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F5B13AA21D2BFD9D0078E314 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5ED99621D34EEB900A9527E /* ITBonjourPeersDetector.m in Sources */,
 				F5ED99561D2E4E5200A9527E /* ITTransport.m in Sources */,
+				F5ED995D1D2FA4A300A9527E /* ITBonjourSession.m in Sources */,
+				F5ED995A1D2FA19900A9527E /* ITBonjourPeer.m in Sources */,
 				F578A44C1D2D00250043FAB9 /* ITSlaveSessionManager.m in Sources */,
 				F5ED99531D2E4CEF00A9527E /* ITPeerRoleMessage.m in Sources */,
 				F578A4461D2CFF040043FAB9 /* ITSessionsController.m in Sources */,
@@ -285,7 +445,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5B13AC41D2BFD9D0078E314 /* new_svrTests.m in Sources */,
+				F5ED995F1D33DAA700A9527E /* SessionsControllerTests.m in Sources */,
+				F5B13AC41D2BFD9D0078E314 /* PeerRolesEstablisherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -394,7 +555,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -403,6 +564,7 @@
 		};
 		F5B13AC91D2BFD9D0078E314 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AFCCA5403E1FAF41E9D8A4E /* Pods-new-svr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "new-svr/Info.plist";
@@ -414,6 +576,7 @@
 		};
 		F5B13ACA1D2BFD9D0078E314 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A94184ACD4FDF4709395C8C /* Pods-new-svr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "new-svr/Info.plist";
@@ -425,6 +588,7 @@
 		};
 		F5B13ACC1D2BFD9E0078E314 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F4966EA885BF857C4767D68 /* Pods-new-svrTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "new-svrTests/Info.plist";
@@ -437,6 +601,7 @@
 		};
 		F5B13ACD1D2BFD9E0078E314 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EB34D475717889A8352786A /* Pods-new-svrTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "new-svrTests/Info.plist";
